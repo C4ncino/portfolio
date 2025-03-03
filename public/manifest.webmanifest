@@ -1,0 +1,25 @@
+{
+  "name": "FiveCom",
+  "short_name": "FiveCom",
+  "description": "FiveCom es una empresa de tecnologías que ofrece soluciones de seguridad informática, redes y telecomunicaciones para diferentes sectores e industrias.",
+  "start_url": "https://fivecom.com.mx",
+  "display": "standalone",
+  "background_color": "#004C97",
+  "theme_color": "#efefef",
+  "icons": [
+    {
+      "src": "tiles/fivecom_logo48x48.webp",
+      "sizes": "48x48",
+      "type": "image/webp"
+    },
+    {
+      "src": "tiles/fivecom_logo48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "72x72 96x96 128x128 256x256"
+    }
+  ]
+}
