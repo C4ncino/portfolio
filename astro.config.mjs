@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://cancino-portfolio.vercel.app",
+  site: "https://ccancino.vercel.app/",
   integrations: [sitemap()],
   i18n: {
     locales: ["es", "en"],
