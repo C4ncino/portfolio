@@ -1,0 +1,21 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getI18nPaths } from "@/i18n/utils";
+import Layout from "@/layouts/Layout.astro";
+
+import Head from "@ui/blocks/Head.astro";
+
+export const getStaticPaths = (() => {
+  return getI18nPaths();
+}) satisfies GetStaticPaths;
+
+const { i18n } = Astro.params;
+---
+
+<Layout>
+  <Head slot="head" title="Nada" description="Nada" />
+
+  <div>
+    <p>{i18n}</p>
+  </div>
+</Layout>
