@@ -1,7 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import type { GetStaticPaths } from "astro";
+import { getI18nPaths } from "@/i18n/utils";
+
+export const getStaticPaths = (() => {
+  return getI18nPaths();
+}) satisfies GetStaticPaths;
 ---
 
-<Layout>
-  
-</Layout>
+<Layout />
