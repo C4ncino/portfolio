@@ -1,21 +1,48 @@
 ---
+import { twMerge } from "tailwind-merge";
 import type { GetStaticPaths } from "astro";
-import { getI18nPaths } from "@/i18n/utils";
+import { getI18nPaths, useTranslations } from "@/i18n/utils";
 import Layout from "@/layouts/Layout.astro";
 
 import Head from "@ui/blocks/Head.astro";
+import { ui } from "@/i18n/ui";
 
 export const getStaticPaths = (() => {
   return getI18nPaths();
 }) satisfies GetStaticPaths;
 
 const { i18n } = Astro.params;
+const t = useTranslations(i18n as keyof typeof ui);
 ---
 
 <Layout>
-  <Head slot="head" title="Nada" description="Nada" />
-
-  <div>
-    <p>{i18n}</p>
-  </div>
+  <Head slot="head" title={t("title")} description={t("description")} />
+  <main
+    class="h-screen w-screen bg-black flex flex-col justify-center items-center"
+  >
+    <h1 class="text-white text-4xl max-w-1/2 text-center">{t("text")}</h1>
+    <h2 class="text-gray-300 text-2xl max-w-1/2 text-center">{t("textB")}</h2>
+    <section class="mt-10 space-x-2">
+      <a
+        aria-disabled={i18n === "es"}
+        href="/es"
+        class={twMerge(
+          "text-white p-2 rounded-md bg-gray-600/50",
+          i18n === "es" && "bg-gray-800/60 text-gray-400",
+        )}
+      >
+        Español
+      </a>
+      <a
+        aria-disabled={i18n === "en"}
+        href="/en"
+        class={twMerge(
+          "text-white p-2 rounded-md bg-gray-600/50",
+          i18n === "en" && "bg-gray-800/60 text-gray-400",
+        )}
+      >
+        English
+      </a>
+    </section>
+  </main>
 </Layout>

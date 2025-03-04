@@ -1,5 +1,4 @@
 import { ui, defaultLang } from './ui';
-import type { GetStaticPaths } from "astro";
 
 export function getLangFromUrl(url: URL) {
   const [, lang] = url.pathname.split('/');

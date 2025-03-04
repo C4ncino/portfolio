@@ -7,11 +7,15 @@ export const defaultLang = 'es';
 
 export const ui = {
   es: {
-    'nav.home': 'Inicio',
-    'nav.about': 'Sobre Mi',
+    'title': "Portafolio de Carlos Cancino",
+    'description': "",
+    'text': "Esta página está en desarrollo",
+    'textB': "¡Te espero de regreso pronto!",
   },
   en: {
-    'nav.home': 'Home',
-    'nav.about': 'About Me',
+    'title': "Carlos Cancino Portfolio",
+    'description': "",
+    'text': "This page is under construction",
+    'textB': "Please check back soon!",
   },
 } as const;
