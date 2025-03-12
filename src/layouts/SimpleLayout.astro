@@ -1,0 +1,17 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+import Footer from "@ui/blocks/Footer.astro";
+---
+
+<BaseLayout>
+  <slot name="head" slot="head" />
+
+  <Fragment slot="content">
+    <div class="flex flex-col min-h-dvh h-full justify-between">
+      <slot />
+
+      <Footer />
+    </div>
+  </Fragment>
+</BaseLayout>

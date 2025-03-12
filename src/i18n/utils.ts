@@ -2,7 +2,7 @@ import { ui, defaultLang } from './ui';
 
 export function getLangFromUrl(url: URL) {
   const [, lang] = url.pathname.split('/');
-  
+
   if (lang in ui) return lang as keyof typeof ui;
 
   return defaultLang;
@@ -15,6 +15,6 @@ export function useTranslations(lang: keyof typeof ui) {
 }
 
 
-export const getI18nPaths = ((extraParams?: {[k: string]: string}) => {
+export const getI18nPaths = ((extraParams?: { [k: string]: string }) => {
   return [{ params: { i18n: "es", ...extraParams } }, { params: { i18n: "en", ...extraParams } }];
 });
