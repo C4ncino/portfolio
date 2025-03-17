@@ -5,16 +5,54 @@ import Head from "@ui/blocks/Head.astro";
 ---
 
 <Layout>
-  <Head slot={"head"} title="404" description="" />
+  <Head slot="head" title="Not Found | Carlos Cancino" description="" />
 
-  <main class="flex-1 flex flex-col justify-center items-center">
-    <h1 class="text-8xl font-bold">404</h1>
-    <p class="text-xl mt-4">Página no encontrada</p>
+  <main
+    class="flex-1 flex flex-col justify-center items-center space-y-8 dark:bg-stone-950 dark:text-white"
+  >
+    <header>
+      <h1 class="text-9xl font-extrabold">404</h1>
+      <h2 id="nf-h2" class="text-2xl font-bold text-center mt-2">
+        Página no encontrada
+      </h2>
+    </header>
+
+    <p
+      id="nf-p"
+      class="text-center max-w-md px-4 text-gray-600 dark:text-gray-400"
+    >
+      Lo sentimos, no pudimos encontrar la página que estás buscando. Es posible
+      que haya sido movida, eliminada o que nunca haya existido.
+    </p>
+
     <a
-      href="/"
-      class="mt-6 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+      id="nf-a"
+      href="/es"
+      class="mt-5 px-4 py-2 bg-black dark:bg-white text-white dark:text-black rounded-md hover:bg-stone-800 dark:hover:bg-stone-200 transition-colors"
     >
       Volver al inicio
     </a>
   </main>
+
+  <script>
+    document.addEventListener("astro:page-load", () => {
+      const lang = document.documentElement.lang;
+
+      if (lang !== "en") return;
+
+      const h2 = document.getElementById("nf-h2");
+      if (!h2) return;
+      h2.textContent = "Page not found";
+
+      const p = document.getElementById("nf-p");
+      if (!p) return;
+      p.textContent =
+        "Sorry, we couldn't find the page you're looking for. It might have been moved, deleted, or never existed. ";
+
+      const a = document.getElementById("nf-a") as HTMLAnchorElement;
+      if (!a) return;
+      a.textContent = "Back to home";
+      a.href = "/en";
+    });
+  </script>
 </Layout>
