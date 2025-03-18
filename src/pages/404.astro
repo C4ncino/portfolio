@@ -1,25 +1,31 @@
 ---
+import { Icon } from "astro-icon/components";
 import Layout from "@/layouts/SimpleLayout.astro";
 
 import Head from "@ui/blocks/Head.astro";
 ---
 
 <Layout>
-  <Head slot="head" title="Not Found | Carlos Cancino" description="" />
+  <Head
+    slot="head"
+    title="Not Found | Carlos Cancino"
+    description="Lo sentimos, no pudimos encontrar la página que estás buscando. Es posible que haya sido movida, eliminada o que nunca haya existido."
+  />
 
   <main
-    class="flex-1 flex flex-col justify-center items-center space-y-8 dark:bg-stone-950 dark:text-white"
+    class="flex-1 flex flex-col justify-center items-center space-y-8 dark:bg-stone-950 dark:text-white text-center"
   >
     <header>
       <h1 class="text-9xl font-extrabold">404</h1>
-      <h2 id="nf-h2" class="text-2xl font-bold text-center mt-2">
+      <h2 id="nf-h2" class="text-2xl font-bold mt-2 inline-flex items-center">
+        <Icon name="ant-design:info-circle-twotone" class="mr-2 mt-1 w-7 h-7" />
         Página no encontrada
       </h2>
     </header>
 
     <p
       id="nf-p"
-      class="text-center max-w-md px-4 text-gray-600 dark:text-gray-400"
+      class="max-w-md xl:max-w-lg px-4 text-gray-600 dark:text-gray-400"
     >
       Lo sentimos, no pudimos encontrar la página que estás buscando. Es posible
       que haya sido movida, eliminada o que nunca haya existido.
@@ -28,8 +34,9 @@ import Head from "@ui/blocks/Head.astro";
     <a
       id="nf-a"
       href="/es"
-      class="mt-5 px-4 py-2 bg-black dark:bg-white text-white dark:text-black rounded-md hover:bg-stone-800 dark:hover:bg-stone-200 transition-colors"
+      class="mt-5 px-4 py-2 bg-black dark:bg-white text-white dark:text-black rounded-md hover:bg-stone-800 dark:hover:bg-stone-200 transition-colors inline-flex items-center"
     >
+      <Icon name="ant-design:home-outlined" class="mr-2 w-6 h-6" />
       Volver al inicio
     </a>
   </main>
