@@ -8,7 +8,7 @@ import Head from "@ui/blocks/Head.astro";
 <Layout>
   <Head
     slot="head"
-    title="Not Found | Carlos Cancino"
+    title="Página no encontrada | Carlos Cancino Portfolio"
     description="Lo sentimos, no pudimos encontrar la página que estás buscando. Es posible que haya sido movida, eliminada o que nunca haya existido."
   />
 
@@ -47,6 +47,15 @@ import Head from "@ui/blocks/Head.astro";
 
       if (lang !== "en") return;
 
+      document.title = "Page not found | Carlos Cancino Portfolio";
+
+      var metaDescription = document.querySelector('meta[name="description"]');
+      if (!metaDescription) return;
+      metaDescription.setAttribute(
+        "content",
+        "Sorry, we couldn't find the page you're looking for. It might have been moved, deleted, or never existed.",
+      );
+
       const h2 = document.getElementById("nf-h2");
       if (!h2) return;
       h2.textContent = "Page not found";
@@ -54,7 +63,7 @@ import Head from "@ui/blocks/Head.astro";
       const p = document.getElementById("nf-p");
       if (!p) return;
       p.textContent =
-        "Sorry, we couldn't find the page you're looking for. It might have been moved, deleted, or never existed. ";
+        "Sorry, we couldn't find the page you're looking for. It might have been moved, deleted, or never existed.";
 
       const a = document.getElementById("nf-a") as HTMLAnchorElement;
       if (!a) return;
