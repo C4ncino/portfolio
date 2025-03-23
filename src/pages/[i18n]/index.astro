@@ -18,10 +18,8 @@ const t = useTranslations(i18n as keyof typeof ui);
 
 <Layout>
   <Head slot="head" title={t("title")} description={t("description")} />
-  <main
-    class="flex-1 w-screen bg-black flex flex-col justify-center items-center"
-  >
-    <h1 class="text-white text-4xl max-w-1/2 text-center">{t("text")}</h1>
+  <main class="flex-1 w-screen flex flex-col justify-center items-center">
+    <h1 class="dark:text-white text-4xl max-w-1/2 text-center">{t("text")}</h1>
     <h2 class="text-gray-300 text-2xl max-w-1/2 text-center">{t("textB")}</h2>
     <section class="mt-10 space-x-2">
       <a

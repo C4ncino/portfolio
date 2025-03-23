@@ -1,20 +1,62 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import NavLink from "@ui/widgets/Nav/NavLink.astro";
+import { sections, socials } from "@/data/links";
+import { Icon } from "astro-icon/components";
+import ThemeSwitcher from "../widgets/Nav/ThemeSwitcher.astro";
+import LangSwitcher from "../widgets/Nav/LangSwitcher.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+("animate-fade-in");
+("animate-fade-out");
 ---
 
-<ul>
-  <li>
-    <a href={getRelativeLocaleUrl(lang, "home")}>
-      {t("nav.home")}
-    </a>
-  </li>
-  <li>
-    <a href={getRelativeLocaleUrl(lang, "about")}>
-      {t("nav.about")}
-    </a>
-  </li>
-</ul>
+<nav class="flex flex-row gap-2">
+  <ul
+    id="nav-menu"
+    class="space-y-2 sm:space-y-0 sm:space-x-3 lg:space-x-5 -z-10 sm:z-0
+    hidden flex-col absolute top-0 pt-16 left-0 w-screen bg-white/10 dark:bg-zinc-950/10 backdrop-blur-xl pb-2 px-3 rounded-md
+    sm:p-0 sm:w-auto sm:static sm:flex sm:flex-row sm:bg-transparent"
+  >
+    {
+      sections.map(({ href, icon, label }) => (
+        <NavLink
+          href={getRelativeLocaleUrl(lang, "").concat("#").concat(href)}
+          icon={icon}
+          label={t(label)}
+        />
+      ))
+    }
+    <div
+      class="flex flex-row items-center justify-between sm:justify-start sm:gap-x-3 lg:gap-x-5"
+    >
+      <li class="animate-fade-in">
+        <menu class="flex flex-row items-center gap-x-5 sm:gap-x-3 lg:gap-x-5">
+          <LangSwitcher lang={lang} />
+          <ThemeSwitcher />
+        </menu>
+      </li>
+      <NavLink
+        href="https://github.com/C4ncino/portfolio"
+        icon="github-filled"
+        iconClass="text-gray-400 dark:text-gray-600"
+        ariaLabel="GitHub Repository"
+        target="_blank"
+      />
+    </div>
+  </ul>
+  <button id="nav-toggle" class="block sm:hidden" tabindex="0">
+    <Icon name="ant-design:menu" class="h-7 w-7" />
+    <Icon name="ant-design:close" class="h-7 w-7 hidden" />
+  </button>
+</nav>
+
+<script>
+  import { NavbarMenu } from "lib/nav";
+
+  document.addEventListener("astro:page-load", () => {
+    new NavbarMenu();
+  });
+</script>
