@@ -1,0 +1,82 @@
+---
+import { JobDescription } from "@/types/general";
+
+interface Props extends JobDescription {}
+
+const lang = Astro.currentLocale;
+
+const { position, company, startDate, endDate, description } = Astro.props;
+
+const start = new Date(startDate);
+
+let end;
+if (endDate) end = new Date(endDate);
+---
+
+<li class="ps-8 relative history-card">
+  <div class="absolute top-0 left-0 h-full">
+    <div class="bg-black dark:bg-white w-3 h-3 rounded-full relative top-2"/>
+    <div
+      class="w-1 h-full dark:bg-white bg-black absolute top-0 left-1/2 -translate-x-1/2 bar"
+    />
+  </div>
+
+  <div class="pb-5">
+    <h3 class="text-lg lg:text-xl font-medium">{position}</h3>
+
+    <div class="flex gap-2">
+      <h4 class="font-light">{company}</h4>
+      <dl class="flex gap-2 text-zinc-600 dark:text-zinc-400 mb-2">
+        <dt class="hidden">{lang === "es" ? "Inicio" : "Start"}</dt>
+        <dd>
+          <time datetime={start.toISOString().slice(0, 7)}
+            >{
+              start.toLocaleString(lang, {
+                timeZone: "UTC",
+                month: "short",
+                year: "numeric",
+              })
+            }</time
+          >
+        </dd>
+
+        <span>&ndash;</span>
+
+        {
+          end ? (
+            <dt class="hidden">{lang === "es" ? "Fin" : "End"}</dt>
+            <dd>
+              <time datetime={end.toISOString().slice(0, 7)}>
+                {end.toLocaleDateString(lang, {
+                  timeZone: "UTC",
+                  month: "short",
+                  year: "numeric",
+                })}
+              </time>
+            </dd>
+          ) : (
+            <dt class="hidden">{lang === "es" ? "Actualidad":"Current"}</dt>
+            <dd>
+              {lang === "es" ? "Actualidad":"Current"}
+            </dd>
+          )
+        }
+      </dl>
+    </div>
+
+    <ul aria-labelledby="activities" class="space-y-2 text-sm lg:text-base">
+      {
+        description.map((activity) =>  <li set:html={activity}/>)
+      }
+    </ul>
+  </div>
+</li>
+
+<style>
+  .history-card:first-of-type .bar {
+    border-radius: 1.5rem 1.5rem 0 0;
+  }
+  .history-card:last-of-type .bar {
+    border-radius: 0 0 1.5rem 1.5rem;
+  }
+</style>

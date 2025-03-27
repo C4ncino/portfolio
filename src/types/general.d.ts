@@ -12,3 +12,11 @@ type InnerLink = Link & {
 type ExternalLink = Link & {
   label: string;
 }
+
+type JobDescription = {
+  position: string;
+  company: string;
+  startDate: string;
+  endDate?: string;
+  description: string[];
+}

@@ -1,0 +1,19 @@
+---
+import { UiProps } from "@/i18n/ui";
+import { JobDescription } from "@/types/general";
+import HistoryCard from "@ui/widgets/HistoryCard.astro";
+
+interface Props extends UiProps {}
+
+const { t } = Astro.props;
+
+const jobs = t("employment.jobs");
+---
+
+<section class="space-y-3 lg:space-y-6">
+  <h2 class="text-center text-2xl lg:text-3xl">Employment History</h2>
+
+  <ul class="max-w-2xl mx-auto">
+    {jobs.map((job: JobDescription) => <HistoryCard {...job} />)}
+  </ul>
+</section>
