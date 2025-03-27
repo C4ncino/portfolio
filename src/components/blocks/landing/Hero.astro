@@ -1,0 +1,50 @@
+---
+import { Image } from "astro:assets";
+import HeroImage from "@/assets/images/hero.jpg";
+import Link from "@ui/widgets/Link.astro";
+
+import { UiProps } from "@/i18n/ui";
+import { socials } from "@/data/links";
+
+interface Props extends UiProps {}
+
+const { t } = Astro.props;
+---
+
+<section
+  id="hero"
+  class="max-w-4xl mx-auto flex flex-col-reverse sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-16 mt-4 sm:mt-8 md:mt-12 lg:mt-16"
+>
+  <hgroup class="space-y-2 sm:space-y-3 lg:space-y-4">
+    <h2 class="text-3xl/tight md:text-5xl/tight lg:text-6xl/tight">
+      {t("hero.salute")}
+      <br />
+      <strong class="font-anta font-normal ps-10"> Carlos Cancino </strong>
+    </h2>
+
+    <p class="mt-4 hyphens-auto">
+      {t("hero.text")}
+    </p>
+    <ul
+      class="flex flex-row flex-wrap items-center gap-x-4 gap-y-1 text-sm text-zinc-400"
+      aria-labelledby="socials"
+    >
+      {
+        socials.map(({ href, icon, label }, i) => {
+          return (
+            <>
+              {i > 0 && <span class="text-zinc-600 dark:text-zinc-400">|</span>}
+              <Link href={href} icon={icon} label={label} target="_blank" />
+            </>
+          );
+        })
+      }
+    </ul>
+  </hgroup>
+
+  <Image
+    src={HeroImage}
+    alt="hero"
+    class="w-40 md:w-56 lg:w-72 aspect-square object-cover rounded-full shadow-xl"
+  />
+</section>

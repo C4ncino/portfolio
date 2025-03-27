@@ -1,0 +1,15 @@
+---
+import Link from "@ui/widgets/Link.astro";
+import { socials } from "@/data/links";
+---
+
+<section class="w-8">
+  <h2 class="text-center">Socials</h2>
+  <ul class="space-y-2 flex flex-row">
+    {
+      socials.map(({ href, icon, label }) => (
+        <Link href={href} icon={icon} ariaLabel={label} target="_blank" />
+      ))
+    }
+  </ul>
+</section>

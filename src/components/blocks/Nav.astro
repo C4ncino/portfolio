@@ -1,8 +1,8 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
-import NavLink from "@ui/widgets/Nav/NavLink.astro";
-import { sections, socials } from "@/data/links";
+import Link from "@ui/widgets/Link.astro";
+import { sections } from "@/data/links";
 import { Icon } from "astro-icon/components";
 import ThemeSwitcher from "../widgets/Nav/ThemeSwitcher.astro";
 import LangSwitcher from "../widgets/Nav/LangSwitcher.astro";
@@ -18,12 +18,13 @@ const t = useTranslations(lang);
     id="nav-menu"
     class="space-y-2 sm:space-y-0 sm:space-x-3 lg:space-x-5 -z-10 sm:z-0
     hidden flex-col absolute top-0 pt-16 left-0 w-screen bg-white/10 dark:bg-zinc-950/10 backdrop-blur-xl pb-2 px-3 rounded-md
-    sm:p-0 sm:w-auto sm:static sm:flex sm:flex-row sm:bg-transparent"
+    sm:p-0 sm:w-auto sm:static sm:flex sm:flex-row sm:bg-transparent
+    lg:text-lg"
   >
     {
       sections.map(({ href, icon, label }) => (
-        <NavLink
-          href={getRelativeLocaleUrl(lang, "").concat("#").concat(href)}
+        <Link
+          href={getRelativeLocaleUrl(lang, href)}
           icon={icon}
           label={t(label)}
         />
@@ -38,7 +39,7 @@ const t = useTranslations(lang);
           <ThemeSwitcher />
         </menu>
       </li>
-      <NavLink
+      <Link
         href="https://github.com/C4ncino/portfolio"
         icon="github-filled"
         iconClass="text-gray-400 dark:text-gray-600"

@@ -1,12 +1,13 @@
 ---
-import { twMerge } from "tailwind-merge";
 import type { GetStaticPaths } from "astro";
 import { getI18nPaths, useTranslations } from "@/i18n/utils";
 import Layout from "@/layouts/FullLayout.astro";
-import { getRelativeLocaleUrl } from "astro:i18n";
+
+import { ui } from "@/i18n/ui";
 
 import Head from "@ui/blocks/Head.astro";
-import { ui } from "@/i18n/ui";
+import Hero from "@ui/blocks/landing/Hero.astro";
+import About from "@ui/blocks/landing/About.astro";
 
 export const getStaticPaths = (() => {
   return getI18nPaths();
@@ -18,30 +19,7 @@ const t = useTranslations(i18n as keyof typeof ui);
 
 <Layout>
   <Head slot="head" title={t("title")} description={t("description")} />
-  <main class="flex-1 w-screen flex flex-col justify-center items-center">
-    <h1 class="dark:text-white text-4xl max-w-1/2 text-center">{t("text")}</h1>
-    <h2 class="text-gray-300 text-2xl max-w-1/2 text-center">{t("textB")}</h2>
-    <section class="mt-10 space-x-2">
-      <a
-        aria-disabled={i18n === "es"}
-        href={getRelativeLocaleUrl("es", "/")}
-        class={twMerge(
-          "text-white p-2 rounded-md bg-gray-600/50",
-          i18n === "es" && "bg-gray-800/60 text-gray-400",
-        )}
-      >
-        Español
-      </a>
-      <a
-        aria-disabled={i18n === "en"}
-        href={getRelativeLocaleUrl("en", "/")}
-        class={twMerge(
-          "text-white p-2 rounded-md bg-gray-600/50",
-          i18n === "en" && "bg-gray-800/60 text-gray-400",
-        )}
-      >
-        English
-      </a>
-    </section>
+  <main class="space-y-12 sm:space-y-16 lg:space-y-20 px-8 pb-6 sm:pb-12">
+    <Hero t={t} />
   </main>
 </Layout>

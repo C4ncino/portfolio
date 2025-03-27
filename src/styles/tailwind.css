@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+@theme {
+  --font-anta: 'Anta';
+
+  --animate-fade-in: fade-in 500ms ease-in-out 1 both;
+  --animate-fade-out: fade-out 500s ease-in-out 1 both;
+
+  --animation-delay-0: 0ms;
+  --animation-delay-100: 100ms;
+  --animation-delay-200: 200ms;
+  --animation-delay-300: 300ms;
+  --animation-delay-400: 400ms;
+  --animation-delay-500: 500ms;
+  --animation-delay-600: 600ms;
+  --animation-delay-700: 700ms;
+  --animation-delay-800: 800ms;
+  --animation-delay-900: 900ms;
+  --animation-delay-1000: 1000ms;
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+}
+
+@utility animation-delay-* {
+  animation-delay: --value(--animation-delay-*);
+  animation-delay: --value([*]);
+}
+
+.min-h-screen-header {
+  min-height: calc(100dvh - calc(var(--spacing) * 16));
+}

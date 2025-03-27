@@ -2,14 +2,9 @@ import { ExternalLink, InnerLink } from "@/types/general";
 
 export const sections: InnerLink[] = [
   {
-    href: "hero",
-    icon: "home-outlined",
-    label: "nav.home",
-  },
-  {
-    href: "about",
+    href: "",
     icon: "user-outlined",
-    label: "nav.about",
+    label: "nav.home",
   },
   {
     href: "projects",
@@ -22,11 +17,16 @@ export const socials: ExternalLink[] = [
   {
     href: "https://github.com/C4ncino",
     icon: "github-filled",
-    label: "GitHub Profile",
+    label: "GitHub",
   },
   {
     href: "https://www.linkedin.com/in/carlos-a-cancino-escobar/",
     icon: "linkedin-filled",
-    label: "Linkedin Profile",
+    label: "Linkedin",
   },
+  {
+    href: "mailto:carlos.a.cancino@outlook.com",
+    icon: "mail-filled",
+    label: "carlos.a.cancino@outlook.com",
+  }
 ];

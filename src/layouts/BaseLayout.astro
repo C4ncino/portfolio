@@ -3,7 +3,7 @@ import { ClientRouter } from "astro:transitions";
 
 import { getLangFromUrl } from "@/i18n/utils";
 
-import "@/styles/global.css";
+import "@/styles/tailwind.css";
 import "@/styles/fonts.css";
 
 const lang = getLangFromUrl(Astro.url);
@@ -21,3 +21,9 @@ const lang = getLangFromUrl(Astro.url);
     </div>
   </body>
 </html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
