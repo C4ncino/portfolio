@@ -20,3 +20,19 @@ type JobDescription = {
   endDate?: string;
   description: string[];
 }
+
+type Tech = {
+  name: string;
+  icon: string;
+  prefix?: string;
+} | string;
+
+type TechStack = {
+  columns: string;
+  name: {
+    [k: string]: string
+    es: string,
+    en: string
+  };
+  items: Tech[];
+}

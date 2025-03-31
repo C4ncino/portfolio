@@ -18,6 +18,8 @@
   },
   "devDependencies": {
     "@iconify-json/ant-design": "^1.2.5",
+    "@iconify-json/devicon": "^1.2.22",
+    "@iconify-json/material-icon-theme": "^1.2.2",
     "prettier": "3.5.3",
     "prettier-plugin-astro": "0.14.1"
   }
