@@ -8,7 +8,7 @@ import { ui } from "@/i18n/ui";
 import Head from "@ui/blocks/Head.astro";
 import Hero from "@ui/blocks/landing/Hero.astro";
 import EmploymentHistory from "@ui/blocks/landing/EmploymentHistory.astro";
-import TechStakc from "@/components/blocks/landing/TechStakc.astro";
+import TechStack from "@/components/blocks/landing/TechStack.astro";
 
 export const getStaticPaths = (() => {
   return getI18nPaths();
@@ -27,6 +27,6 @@ const t = useTranslations(i18n as keyof typeof ui);
   <main class="space-y-32 px-8 pb-6 sm:pb-12">
     <Hero t={t} />
     <EmploymentHistory t={t} />
-    <TechStakc />
+    <TechStack />
   </main>
 </Layout>
