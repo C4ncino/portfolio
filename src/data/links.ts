@@ -16,17 +16,17 @@ export const sections: InnerLink[] = [
 export const socials: ExternalLink[] = [
   {
     href: "https://github.com/C4ncino",
-    icon: "github-filled",
+    icon: "github",
     label: "GitHub",
   },
   {
     href: "https://www.linkedin.com/in/carlos-a-cancino-escobar/",
-    icon: "linkedin-filled",
+    icon: "linkedin",
     label: "Linkedin",
   },
   {
     href: "mailto:carlos.a.cancino@outlook.com",
-    icon: "mail-filled",
+    icon: "mail",
     label: "carlos.a.cancino@outlook.com",
   }
 ];

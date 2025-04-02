@@ -1,15 +1,43 @@
 ---
 import Link from "@ui/widgets/Link.astro";
 import { socials } from "@/data/links";
+import { UiProps } from "@/i18n/ui";
+import { Icon } from "astro-icon/components";
+
+interface Props extends UiProps {}
+
+const { t } = Astro.props;
 ---
 
-<section class="w-8">
-  <h2 class="text-center">Socials</h2>
-  <ul class="space-y-2 flex flex-row">
+<section class="w-full space-y-2 lg:space-y-4">
+  <h2 class="text-center text-2xl lg:text-3xl mb-2 md:mb-4">
+    {t("contact.title")}
+  </h2>
+  <ul
+    class="grid grid-cols-1 sm:grid-cols-2 justify-items-center gap-4 px-2 py-4 md:px-16 lg:px-20 sm:py-6 sm:px-4 md:py-8 bg-zinc-50/80 dark:bg-zinc-900/50 rounded-md"
+  >
     {
       socials.map(({ href, icon, label }) => (
-        <Link href={href} icon={icon} ariaLabel={label} target="_blank" />
+        <Link
+          className="w-full text-sm sm:text-base p-2 border-2 border-black dark:border-white rounded-md hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-500"
+          href={href}
+          icon={icon}
+          label={label}
+          target="_blank"
+        />
       ))
     }
+    <li
+      class="w-full p-2 border-2 border-black dark:border-white rounded-md hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-500 text-sm sm:text-base"
+    >
+      <a
+        class="inline-flex flew-row items-center gap-1 peer min-h-8"
+        href={"/docs/resume_Carlos_Cancino.pdf"}
+        download
+      >
+        <Icon name="ant-design:file-pdf" class="w-7 h-7" />
+        {t("contact.resume")}
+      </a>
+    </li>
   </ul>
 </section>

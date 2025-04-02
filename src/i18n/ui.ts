@@ -17,7 +17,9 @@ export const ui = {
     'hero.text': "Un ingeniero en sistemas computa­cionales con experiencia en desarrollo de aplicaciones web e híbridas, automatiza­ción y sistemas embebidos. Me apasiona la tecnología y siempre estoy buscando aprender cosas nuevas. Disfruto crear soluciones innovadoras enfrentando nuevos desafíos.",
     'employment.title': "Experiencia Laboral",
     'employment.jobs': jobsEs,
-    'tech.title': "He usado estas tecnologías",
+    'tech.title': "He trabajado con",
+    'contact.title': "Contácteme",
+    'contact.resume': "Currículum",
   },
   en: {
     'title': "Carlos Cancino Portfolio",
@@ -28,7 +30,10 @@ export const ui = {
     'hero.text': "Computer systems engineer with expe­rience in web and hybrid application development, automation and embedded systems. Passionate about technology, always eager to learn and share my knowledge.",
     'employment.title': "Employment History",
     'employment.jobs': jobsEn,
-    'tech.title': "I've used these technologies",
+    'tech.title': "I've worked with",
+    'contact.title': "Contact me",
+    'contact.resume': "Resume",
+
   },
 } as const;
 
