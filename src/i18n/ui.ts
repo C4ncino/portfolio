@@ -18,8 +18,9 @@ export const ui = {
     'employment.title': "Experiencia Laboral",
     'employment.jobs': jobsEs,
     'tech.title': "He trabajado con",
-    'contact.title': "Contácteme",
+    'contact.title': "Contáctame",
     'contact.resume': "Currículum",
+    'contact.resumeLink': "cv_Carlos_Cancino.pdf",
   },
   en: {
     'title': "Carlos Cancino Portfolio",
@@ -33,6 +34,7 @@ export const ui = {
     'tech.title': "I've worked with",
     'contact.title': "Contact me",
     'contact.resume': "Resume",
+    'contact.resumeLink': "resume_Carlos_Cancino.pdf",
 
   },
 } as const;
