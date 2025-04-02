@@ -1,11 +1,30 @@
 ---
 import Layout from "@/layouts/FullLayout.astro";
 import type { GetStaticPaths } from "astro";
-import { getI18nPaths } from "@/i18n/utils";
+import { getI18nPaths, useTranslations } from "@/i18n/utils";
+
+import Head from "@ui/blocks/Head.astro";
+import { ui } from "@/i18n/ui";
+import { Icon } from "astro-icon/components";
 
 export const getStaticPaths = (() => {
   return getI18nPaths();
 }) satisfies GetStaticPaths;
+
+const i18n = Astro.currentLocale;
+const t = useTranslations(i18n as keyof typeof ui);
 ---
 
-<Layout />
+<Layout>
+  <Head slot="head" title="Projects" description="Projects" />
+
+  <main
+    class="pt-10 text-xl md:text-2xl lg:text-3xl flex flex-row gap-4 items-center"
+  >
+    <Icon name="ant-design:bug-outlined" />
+    <h1>
+      {t("projects.message")}
+    </h1>
+    <Icon name="ant-design:bug-outlined" />
+  </main>
+</Layout>

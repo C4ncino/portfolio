@@ -21,6 +21,7 @@ export const ui = {
     'contact.title': "Contáctame",
     'contact.resume': "Currículum",
     'contact.resumeLink': "/cv_Carlos_Cancino.pdf",
+    'projects.message': "Esta sección sigue en construcción",
   },
   en: {
     'title': "Carlos Cancino Portfolio",
@@ -35,6 +36,7 @@ export const ui = {
     'contact.title': "Contact me",
     'contact.resume': "Resume",
     'contact.resumeLink': "/resume_Carlos_Cancino.pdf",
+    'projects.message': "This section is still under construction",
 
   },
 } as const;
