@@ -33,10 +33,14 @@ const {
     target={target}
     aria-label={ariaLabel ?? label}
   >
-    <Icon
-      name={"ant-design:" + icon}
-      class={label ? "w-6 h-6" : "w-7 h-7" + " " + iconClass}
-    />
+    {
+      icon && (
+        <Icon
+          name={"ant-design:" + icon}
+          class={label ? "w-6 h-6" : "w-7 h-7" + " " + iconClass}
+        />
+      )
+    }
     {label}
   </a>
   <span

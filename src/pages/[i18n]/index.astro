@@ -15,7 +15,7 @@ export const getStaticPaths = (() => {
   return getI18nPaths();
 }) satisfies GetStaticPaths;
 
-const { i18n = "es" } = Astro.params;
+const i18n = Astro.currentLocale;
 const t = useTranslations(i18n as keyof typeof ui);
 ---
 

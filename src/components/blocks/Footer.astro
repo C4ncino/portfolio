@@ -1,1 +1,40 @@
-<footer class="h-56 bg-amber-500"></footer>
+---
+import { sections, socials } from "@/data/links";
+import Link from "../widgets/Link.astro";
+import { ui, UiProps } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+interface Props extends UiProps {}
+
+const i18n = Astro.currentLocale;
+const t = useTranslations(i18n as keyof typeof ui);
+---
+
+<footer class="py-4 bg-zinc-50 dark:bg-zinc-950 px-4 md:px-10">
+  <section class="pb-4" aria-label="page links">
+    <ul class="flex flex-row justify-center lg:gap-4">
+      {
+        sections.map((link) => (
+          <Link href={link.href} label={t(link.label) as string} />
+        ))
+      }
+    </ul>
+  </section>
+
+  <section aria-labelledby="social" class="space-y-1">
+    <h2 class="text-center text-sm" id="social">
+      Sígueme en mis redes sociales
+    </h2>
+    <ul class="flex flex-row justify-center gap-4">
+      {
+        socials.map((social) => (
+          <Link
+            href={social.href}
+            icon={social.icon + "-filled"}
+            ariaLabel={social.label}
+          />
+        ))
+      }
+    </ul>
+  </section>
+</footer>
