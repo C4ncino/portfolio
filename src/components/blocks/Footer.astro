@@ -3,11 +3,14 @@ import { sections, socials } from "@/data/links";
 import Link from "../widgets/Link.astro";
 import { ui, UiProps } from "@/i18n/ui";
 import { useTranslations } from "@/i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 interface Props extends UiProps {}
 
 const i18n = Astro.currentLocale;
 const t = useTranslations(i18n as keyof typeof ui);
+
+console.log(sections);
 ---
 
 <footer class="py-4 bg-zinc-50 dark:bg-zinc-950 px-4 md:px-10">
@@ -15,7 +18,10 @@ const t = useTranslations(i18n as keyof typeof ui);
     <ul class="flex flex-row justify-center lg:gap-4 gap-2">
       {
         sections.map((link) => (
-          <Link href={link.href} label={t(link.label) as string} />
+          <Link
+            href={getRelativeLocaleUrl(i18n as string, link.href)}
+            label={t(link.label) as string}
+          />
         ))
       }
     </ul>
