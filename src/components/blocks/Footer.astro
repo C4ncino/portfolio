@@ -12,7 +12,7 @@ const t = useTranslations(i18n as keyof typeof ui);
 
 <footer class="py-4 bg-zinc-50 dark:bg-zinc-950 px-4 md:px-10">
   <section class="pb-4" aria-label="page links">
-    <ul class="flex flex-row justify-center lg:gap-4">
+    <ul class="flex flex-row justify-center lg:gap-4 gap-2">
       {
         sections.map((link) => (
           <Link href={link.href} label={t(link.label) as string} />
