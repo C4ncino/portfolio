@@ -2,10 +2,10 @@
 <browserconfig>
     <msapplication>
         <title>
-            <square70x70logo src="tiles/fivecom_logo70x70.png"/>
-            <square150x150logo src="tiles/fivecom_logo150x150.png"/>        
-            <square310x310logo src="tiles/fivecom_logo310x310.png"/>
-            <TileColor>#FFFFFF</TileColor>
+            <square70x70logo src="images/logo/logo72x72.png"/>
+            <square150x150logo src="images/logo/logo128x128.png"/>        
+            <square310x310logo src="images/logo/logo256x256.png"/>
+            <TileColor>#000</TileColor>
         </title>
     </msapplication>
 </browserconfig>
