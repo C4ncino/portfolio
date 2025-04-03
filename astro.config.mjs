@@ -7,7 +7,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://ccancino.vercel.app/",
+  site: "https://cancino.dev/",
   output: "static",
   integrations: [sitemap(), icon()],
   i18n: {
