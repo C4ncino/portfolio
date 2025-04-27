@@ -35,7 +35,7 @@ const maxTechs =
       class={`h-48 sm:h-full w-full sm:w-32 aspect-square object-top object-cover rounded-md ${projectInfo.image.format === "svg" ? "sm:object-contain sm:object-bottom" : ""}`}
     />
 
-    <div class="px-4 md:px-0">
+    <div class="px-4 md:px-0 flex-1">
       <div class="flex flex-row items-center justify-between pb-2 pe-2">
         <h2 class="text-2xl font-semibold">{name}</h2>
 
@@ -81,18 +81,15 @@ const maxTechs =
 
       <p
         class="text-sm leading-relaxed hyphens-auto text-zinc-700 dark:text-zinc-300"
+        set:html={description}
       >
-        {description} Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste
-        facilis reprehenderit vero distinctio dignissimos exercitationem ducimus!
-        Quam esse magnam explicabo, deserunt architecto totam quod fuga autem, vel
-        nisi provident, nam quae non voluptates placeat sed sapiente.
       </p>
     </div>
   </div>
 
   <h3 class="px-4 m-0 my-2 text-lg text-zinc-600 dark:text-zinc-300">{techTitle}</h3>
   <ul
-    class="technology-block flex flex-wrap gap-2 pb-4 items-center px-5 sm:px-3"
+    class="technology-block flex flex-wrap gap-2 pb-4 px-5 sm:px-3 lg:grid lg:grid-cols-5 items-center"
   >
     {
       projectInfo.technologies
@@ -112,12 +109,12 @@ const maxTechs =
       projectInfo.technologies.length > maxTechs && (
         <>
           <li>
-            <button class="show-more-btn text-sm italic text-zinc-500 hover:cursor-pointer">
+            <button class="show-more-btn text-sm italic text-zinc-500 hover:cursor-pointer w-full">
               {btnMoreTitle} +{projectInfo.technologies.length - 4}
             </button>
           </li>
-          <li class="hidden show-less-wrapper">
-            <button class="show-less-btn text-sm italic text-zinc-500 hover:cursor-pointer">
+          <li class="hidden show-less-wrapper lg:col-span-1">
+            <button class="show-less-btn text-sm italic text-zinc-500 hover:cursor-pointer text-center w-full">
               {btnLessTitle}
             </button>
           </li>
@@ -136,12 +133,14 @@ const maxTechs =
 
         const extraItems = block.querySelectorAll(".extra-tech");
         const lessWrapper = block.querySelector(".show-less-wrapper");
+        const moreWrapper = button.closest("li");        
 
         extraItems.forEach((el) => el.classList.remove("hidden"));
         button.classList.add("hidden");
 
-        if (!lessWrapper) return;
+        if (!lessWrapper || !moreWrapper) return;
         lessWrapper.classList.remove("hidden");
+        moreWrapper.classList.add("hidden");
       });
     });
 
@@ -153,14 +152,19 @@ const maxTechs =
 
         const extraItems = block.querySelectorAll(".extra-tech");
         const moreButton = block.querySelector(".show-more-btn");
+
+        if (!moreButton) return;
+
+        const moreButtonWrapper = moreButton.closest("li");
         const lessWrapper =
           block.closest(".show-less-wrapper") ||
           block.querySelector(".show-less-wrapper");
 
         extraItems.forEach((el) => el.classList.add("hidden"));
 
-        if (!moreButton || !lessWrapper) return;
+        if (!lessWrapper || !moreButtonWrapper) return;
 
+        moreButtonWrapper.classList.remove("hidden");
         moreButton.classList.remove("hidden");
         lessWrapper.classList.add("hidden");
       });
