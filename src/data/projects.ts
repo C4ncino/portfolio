@@ -13,6 +13,7 @@ import MusicImg from "@img-projects/music.svg"
 import TRAppImg from "@img-projects/tr.png"
 import HRImg from "@img-projects/hr.svg"
 import CurrencyImg from "@img-projects/currency.svg"
+import SupervisorImg from "@img-projects/super.svg"
 
 import PlaceholderImg from "@img-projects/placeholder.svg"
 
@@ -32,12 +33,12 @@ export const projectsIds = [
   "platypus",
   "currency",
   "vr",
+  "supervisor",
   "freedom",
   "music",
   "e-commerce",
   "diary",
   "hr",
-  "supervisor",
 ] as const
 
 type ProjectId = typeof projectsIds[number]
@@ -128,7 +129,7 @@ export const projectsInfo: Record<ProjectId, ProjectInfo> = {
     technologies: [languages[2], tools[0], tools[1], 'SQLite']
   },
   supervisor: {
-    image: PlaceholderImg,
+    image: SupervisorImg,
     repositories: ["git@github.com:C4ncino/supervisor.git"],
     technologies: ["RaspberryPi", "Plotly", "Python", dbs[0]]
   }
