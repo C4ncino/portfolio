@@ -1,0 +1,169 @@
+---
+import { Project } from "@/types/general";
+import Link from "@ui/widgets/Link.astro";
+import Image from "astro/components/Image.astro";
+import TechCard from "./TechCard.astro";
+
+interface Props extends Project {
+  repoTitle: string;
+  techTitle: string;
+  btnMoreTitle: string;
+  btnLessTitle: string;
+}
+
+const {
+  name = "Lorem Ipsum",
+  description = "",
+  projectInfo,
+  repoTitle,
+  techTitle,
+  btnMoreTitle,
+  btnLessTitle,
+} = Astro.props;
+
+const maxTechs =
+  projectInfo.technologies.length > 5 ? 4 : projectInfo.technologies.length;
+---
+
+<section
+  class="space-y-4 max-w-[44rem] mx-auto bg-zinc-50 dark:bg-zinc-950 border-4 border-zinc-50 dark:border-zinc-950 rounded-md"
+>
+  <div class="flex flex-col gap-4 sm:flex-row sm:p-2">
+    <Image
+      src={projectInfo.image}
+      alt={name}
+      class={`h-48 sm:h-full w-full sm:w-32 aspect-square object-top object-cover rounded-md ${projectInfo.image.format === "svg" ? "sm:object-contain sm:object-bottom" : ""}`}
+    />
+
+    <div class="px-4 md:px-0">
+      <div class="flex flex-row items-center justify-between pb-2 pe-2">
+        <h2 class="text-2xl font-semibold">{name}</h2>
+
+        <ul class="flex flex-row gap-2">
+          {
+            projectInfo.demo && (
+              <li>
+                <Link
+                  href={projectInfo.demo}
+                  ariaLabel="Demo"
+                  icon="link-outlined"
+                  target="_blank"
+                  className="text-zinc-600 dark:text-zinc-400 text-sm"
+                />
+              </li>
+            )
+          }
+          {
+            projectInfo.repositories.map((repo) => (
+              <li>
+                {typeof repo === "string" ? (
+                  <Link
+                    href={repo}
+                    icon="github"
+                    ariaLabel={repoTitle}
+                    className="text-zinc-600 dark:text-zinc-400 text-sm"
+                    target="_blank"
+                  />
+                ) : (
+                  <Link
+                    href={repo.url}
+                    label={repo.title}
+                    icon="github"
+                    className="text-zinc-600 dark:text-zinc-400 text-sm"
+                    target="_blank"
+                  />
+                )}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <p
+        class="text-sm leading-relaxed hyphens-auto text-zinc-700 dark:text-zinc-300"
+      >
+        {description} Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste
+        facilis reprehenderit vero distinctio dignissimos exercitationem ducimus!
+        Quam esse magnam explicabo, deserunt architecto totam quod fuga autem, vel
+        nisi provident, nam quae non voluptates placeat sed sapiente.
+      </p>
+    </div>
+  </div>
+
+  <h3 class="px-4 m-0 my-2 text-lg text-zinc-600 dark:text-zinc-300">{techTitle}</h3>
+  <ul
+    class="technology-block flex flex-wrap gap-2 pb-4 items-center px-5 sm:px-3"
+  >
+    {
+      projectInfo.technologies
+        .slice(0, maxTechs)
+        .map((tech) => <TechCard item={tech} />)
+    }
+
+    {
+      projectInfo.technologies
+        .slice(maxTechs)
+        .map((tech) => (
+          <TechCard className="extra-tech hidden animate-fade-in" item={tech} />
+        ))
+    }
+
+    {
+      projectInfo.technologies.length > maxTechs && (
+        <>
+          <li>
+            <button class="show-more-btn text-sm italic text-zinc-500 hover:cursor-pointer">
+              {btnMoreTitle} +{projectInfo.technologies.length - 4}
+            </button>
+          </li>
+          <li class="hidden show-less-wrapper">
+            <button class="show-less-btn text-sm italic text-zinc-500 hover:cursor-pointer">
+              {btnLessTitle}
+            </button>
+          </li>
+        </>
+      )
+    }
+  </ul>
+</section>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll(".show-more-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        const block = button.closest(".technology-block");
+        if (!block) return;
+
+        const extraItems = block.querySelectorAll(".extra-tech");
+        const lessWrapper = block.querySelector(".show-less-wrapper");
+
+        extraItems.forEach((el) => el.classList.remove("hidden"));
+        button.classList.add("hidden");
+
+        if (!lessWrapper) return;
+        lessWrapper.classList.remove("hidden");
+      });
+    });
+
+    document.querySelectorAll(".show-less-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        const block = button.closest(".technology-block");
+
+        if (!block) return;
+
+        const extraItems = block.querySelectorAll(".extra-tech");
+        const moreButton = block.querySelector(".show-more-btn");
+        const lessWrapper =
+          block.closest(".show-less-wrapper") ||
+          block.querySelector(".show-less-wrapper");
+
+        extraItems.forEach((el) => el.classList.add("hidden"));
+
+        if (!moreButton || !lessWrapper) return;
+
+        moreButton.classList.remove("hidden");
+        lessWrapper.classList.add("hidden");
+      });
+    });
+  });
+</script>

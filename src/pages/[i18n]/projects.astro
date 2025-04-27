@@ -4,8 +4,10 @@ import type { GetStaticPaths } from "astro";
 import { getI18nPaths, useTranslations } from "@/i18n/utils";
 
 import Head from "@ui/blocks/Head.astro";
-import { ui } from "@/i18n/ui";
-import { Icon } from "astro-icon/components";
+import { Language, ui } from "@/i18n/ui";
+import { projectsIds, getProject } from "@/data/projects";
+
+import ProjectCard from "@ui/widgets/ProjectCard.astro";
 
 export const getStaticPaths = (() => {
   return getI18nPaths();
@@ -13,18 +15,26 @@ export const getStaticPaths = (() => {
 
 const i18n = Astro.currentLocale;
 const t = useTranslations(i18n as keyof typeof ui);
+
+const projects = projectsIds.map((id) => getProject(i18n as Language, id));
+const props = {
+  repoTitle: t("projects.repo") as string,
+  techTitle: t("projects.techs") as string,
+  btnMoreTitle: t("projects.more") as string,
+  btnLessTitle: t("projects.less") as string,
+};
 ---
 
 <Layout>
   <Head slot="head" title="Projects" description="Projects" />
 
-  <main
-    class="pt-10 text-xl md:text-2xl lg:text-3xl flex flex-row gap-4 items-center"
-  >
-    <Icon name="ant-design:bug-outlined" />
-    <h1>
-      {t("projects.message")}
+  <main>
+    <h1 class="text-4xl font-bold my-4 mb-6 text-center">
+      {t("projects.title")}
     </h1>
-    <Icon name="ant-design:bug-outlined" />
+
+    <ul class="space-y-5 px-4 pb-8">
+      {projects.map((project) => <ProjectCard {...project} {...props} />)}
+    </ul>
   </main>
 </Layout>

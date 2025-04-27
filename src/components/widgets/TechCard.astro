@@ -1,0 +1,28 @@
+---
+import { Icon } from "astro-icon/components";
+
+import { Tech } from "@/types/general";
+
+interface Props {
+  item: Tech
+  className?: string
+}
+
+const { item, className } = Astro.props;
+---
+<li class={`flex flex-row items-center justify-center rounded-md w-full max-w-32 bg-zinc-100 dark:bg-zinc-800 gap-2 py-2 px-3 ${className}`}>
+  {typeof item === "string" ? 
+    (
+      <Icon
+        name={`devicon:${item.toLowerCase()}`}
+        class="h-5 w-5"
+      />
+    ):(
+      <Icon
+        name={`${item.prefix ? item.prefix : "devicon"}:${item.icon}`}}
+        class="h-5 w-5"
+      />
+    )
+  }
+  <p class="text-center text-xs md:text-sm">{typeof item === "string" ? item : item.name}</p>
+</li>

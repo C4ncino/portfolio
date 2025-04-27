@@ -2,7 +2,7 @@ import { jobsEn, jobsEs } from "@/data/jobs";
 
 export const languages = {
   en: 'English',
-  esp: 'Español',
+  es: 'Español',
 };
 
 export const defaultLang = 'es';
@@ -21,7 +21,11 @@ export const ui = {
     'contact.title': "Contáctame",
     'contact.resume': "Currículum",
     'contact.resumeLink': "/cv_Carlos_Cancino.pdf",
-    'projects.message': "Esta sección sigue en construcción",
+    'projects.title': "Mis Proyectos",
+    'projects.repo': "Repositorio",
+    'projects.techs': "Tecnologías",
+    'projects.more': "Mostrar más",
+    'projects.less': "Mostrar menos",
   },
   en: {
     'title': "Carlos Cancino Portfolio",
@@ -36,11 +40,15 @@ export const ui = {
     'contact.title': "Contact me",
     'contact.resume': "Resume",
     'contact.resumeLink': "/resume_Carlos_Cancino.pdf",
-    'projects.message': "This section is still under construction",
-
+    'projects.title': "My Projects",
+    'projects.repo': "Source",
+    'projects.techs': "Technologies",
+    'projects.more': "Show more",
+    'projects.less': "Show less",
   },
 } as const;
 
+export type Language = keyof typeof languages;
 export type UiKey = keyof typeof ui[typeof defaultLang];
 export type UiTextGetter = (key: UiKey) => any;
 export interface UiProps {

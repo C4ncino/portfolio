@@ -1,4 +1,5 @@
 import { UiKey } from "@/i18n/ui";
+import { ImageMetadata } from "astro";
 
 type Link = {
   href: string;
@@ -35,4 +36,27 @@ type TechStack = {
     en: string
   };
   items: Tech[];
+}
+
+type ProjectText = {
+  name?: string;
+  description?: string;
+}
+
+type Repository = {
+  title: string;
+  url: string;
+} | string
+
+type ProjectInfo = {
+  image: ImageMetadata;
+  demo?: string;
+  repositories: Repository[];
+  technologies: Tech[];
+}
+
+type Project = {
+  name?: string;
+  description?: string;
+  projectInfo: ProjectInfo;
 }

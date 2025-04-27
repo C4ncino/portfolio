@@ -15,6 +15,9 @@
       ],
       "@ui/*": [
         "./components/*",
+      ],
+      "@img-projects/*": [
+        "./assets/images/projects/*"
       ]
     }
   }
